@@ -17,8 +17,6 @@ class DataManager {
     
     static let shared = DataManager()
     
-    private var current: Int = 0
-    
     private var studentsLocation = [StudentLocation]()
     
     private var delegates: [DataManagerDelegate] = []
@@ -34,11 +32,10 @@ class DataManager {
     }
     
     func fetchNextStudents(completion: @escaping (_ success: Bool)->Void) {
-        Client.fetchStudentLocation(limit: 100, skip: current) { [weak self] (result) in
+        Client.fetchStudentLocation(limit: 100, order: "-updatedAt") { [weak self] (result) in
             switch result {
             case .success(let students):
                 self?.studentsLocation = students
-                self?.current += 100
                 completion(true)
                 self?.delegates.forEach({ (delegate) in
                     delegate.didFetchStudents()

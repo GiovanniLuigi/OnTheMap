@@ -58,7 +58,7 @@
                <BreakpointActionProxy
                   ActionExtensionID = "Xcode.BreakpointAction.DebuggerCommand">
                   <ActionContent
-                     consoleCommand = "expression locationTextField.text = &quot;rua dos pinheiros 447, S&#xe3;o Paulo, SP&quot;">
+                     consoleCommand = "expression locationTextField.text = &quot;Rio de Janeiro, RJ&quot;">
                   </ActionContent>
                </BreakpointActionProxy>
             </Actions>
