@@ -38,7 +38,7 @@ class MapViewController: UIViewController {
     
     private func fetchStudents() {
         if dataManager.students.isEmpty {
-            dataManager.fetchNextStudents { (_) in
+            dataManager.refreshStudents { (_) in
             }
         } else {
             clearAndUpdateMap()

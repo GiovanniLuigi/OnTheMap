@@ -41,7 +41,7 @@ class OnMapTabBarController: UITabBarController {
     
     @objc private func refresh() {
         self.refreshButton?.isEnabled = false
-        dataManager.fetchNextStudents { [weak self] (success) in
+        dataManager.refreshStudents { [weak self] (success) in
             self?.refreshButton?.isEnabled = true
             if !success {
                 self?.showAlert(title: "Error", message: "Not able to load students.")

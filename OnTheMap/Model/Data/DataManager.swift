@@ -31,7 +31,7 @@ class DataManager {
         delegates.append(delegate)
     }
     
-    func fetchNextStudents(completion: @escaping (_ success: Bool)->Void) {
+    func refreshStudents(completion: @escaping (_ success: Bool)->Void) {
         Client.fetchStudentLocation(limit: 100, order: "-updatedAt") { [weak self] (result) in
             switch result {
             case .success(let students):
