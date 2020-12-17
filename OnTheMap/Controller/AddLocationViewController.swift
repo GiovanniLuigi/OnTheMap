@@ -40,7 +40,7 @@ class AddLocationViewController: UIViewController {
         annotation.coordinate = location.coordinate
         annotation.title = name
         
-        if let vc = storyboard?.instantiateViewController(identifier: "finishAddLocation") as? FinishAddLocationViewController {
+        if let storyboard = storyboard, let vc = initFromStoryboard(type: FinishAddLocationViewController.self, storyboard: storyboard) {
             vc.name = name
             vc.location = location
             vc.region = region

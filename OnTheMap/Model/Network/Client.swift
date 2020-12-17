@@ -143,9 +143,13 @@ struct Client {
             request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
         }
         
-        doHttpRequest(request, modelType: Session.self, skip: 5) { (result) in
+        doHttpRequest(request, modelType: [String: Session].self, skip: 5) { (result) in
             switch result {
-            case .success(let session):
+            case .success(let response):
+                guard let session = response["session"] else {
+                    completion(.failure(ClientError.parsingError))
+                    return
+                }
                 completion(.success(session))
             case .failure(let error):
                 completion(.failure(error))

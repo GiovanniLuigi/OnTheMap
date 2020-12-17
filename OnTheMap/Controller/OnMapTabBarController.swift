@@ -34,6 +34,9 @@ class OnMapTabBarController: UITabBarController {
         let addButton = UIBarButtonItem(image: UIImage(named: "icon_addpin"), style: .plain, target: self, action: #selector(add))
         
         self.navigationItem.setRightBarButtonItems([addButton, refreshButton], animated: false)
+        
+        let logoutButton = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logout))
+        self.navigationItem.setLeftBarButton(logoutButton, animated: false)
     }
     
     @objc private func refresh() {
@@ -47,9 +50,23 @@ class OnMapTabBarController: UITabBarController {
     }
     
     @objc private func add() {
-        let storyboardId = "addLocation"
-        if let vc = storyboard?.instantiateViewController(withIdentifier: storyboardId) as? AddLocationViewController {
+        if let storyboard = storyboard, let vc = initFromStoryboard(type: AddLocationViewController.self, storyboard: storyboard) {
             navigationController?.show(vc, sender: self)
+        }
+    }
+    
+    @objc private func logout() {
+        let loadingView = addLoadingView()
+        Client.logout { [weak self] (result) in
+            loadingView.removeFromSuperview()
+            switch result {
+            case .success:
+                if let storyboard = self?.storyboard, let vc = self?.initFromStoryboard(type: LoginViewController.self, storyboard: storyboard) {
+                    self?.navigationController?.setViewControllers([vc], animated: false)
+                }
+            case .failure(let error):
+                self?.showAlert(title: "Error", message: error.localizedDescription)
+            }
         }
     }
 }

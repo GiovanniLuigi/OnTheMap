@@ -217,7 +217,7 @@
         <!--Add Location-->
         <scene sceneID="gZx-Nk-ywI">
             <objects>
-                <viewController storyboardIdentifier="addLocation" title="Add Location" id="bna-ku-PDb" customClass="AddLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddLocationViewController" title="Add Location" id="bna-ku-PDb" customClass="AddLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EMI-zt-shQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -291,7 +291,7 @@
         <!--Finish Add Location View Controller-->
         <scene sceneID="M3N-Li-a4J">
             <objects>
-                <viewController storyboardIdentifier="finishAddLocation" id="IOF-s8-9X0" customClass="FinishAddLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FinishAddLocationViewController" id="IOF-s8-9X0" customClass="FinishAddLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cdh-Fv-3mv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
